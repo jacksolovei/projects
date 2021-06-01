@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>ToDo List</title>
+    <script src="/js/jquery-3.4.0.min.js"></script>
+    <script src="/js/main.js"></script>
+    <link rel="stylesheet" type="text/css" href="/css/styles.css">
+</head>
+<body>
+    <div id="task-form">
+        <form>
+            <h2>Добавление задания</h2>
+            <label>Задание:</label>
+            <input type="text" name="name" value="">
+            <label>Дата окончания:</label>
+            <input type="text" name="date" value="">
+            <label>Описание:</label>
+            <input type="text" name="description" value="">
+            <hr>
+            <button id="save-task">Сохранить</button>
+        </form>
+    </div>
+    <div id="remove-task-form">
+        <form>
+            <h2>Удаление задания</h2>
+            <label>Номер задания:</label>
+            <input type="text" id="id" value="">
+            <hr>
+            <button id="remove-task">Удалить</button>
+        </form>
+    </div>
+    <div id="update-task-form">
+        <form>
+            <h2>Обновление задания:</h2>
+            <label>Номер задания:</label>
+            <input type="text" id="task-id" value="">
+            <label>Новое название:</label>
+            <input type="text" name="name" value="">
+            <label>Новая дата окончания:</label>
+            <input type="text" name="date" value="">
+            <label>Новое описание:</label>
+            <input type="text" name="description" value="">
+            <hr>
+            <button id="update-task">Сохранить</button>
+        </form>
+    </div>
+    <h1>Список дел (<span th:text="${tasksCount}">0</span>)</h1>
+    <button id="show-add-task-form">Добавить задание</button>
+    <br><br>
+    <button id="show-update-task-form">Обновить задание</button>
+    <br><br>
+    <button id="show-remove-task-form">Удалить задание</button>
+    <br><br>
+    <button id="remove-all">Очистить список</button>
+    <br><br>
+    <div id="task-list">
+        <div th:each="task : ${tasks}">
+            <a href="#" class="task-link" th:attr="data-id=${task.id}" th:text="${task.name}"></a>
+        </div>
+    </div>
+</body>
+</html>
